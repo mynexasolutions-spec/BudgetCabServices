@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-prime-dark text-gray-100;
+    overflow-x: hidden;
+  }
+}
+
+/* Glass Header & Effect Utilities */
+.glass-header {
+  background: rgba(11, 14, 20, 0.85);
+  backdrop-filter: blur(12px);
+}
+
+.orange-glow-text {
+  text-shadow: 0 0 15px rgba(242, 101, 34, 0.6);
+}
+
+/* Continuous Horizontal Ticker Animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker 30s linear infinite;
+}
+
+.animate-ticker:hover {
+  animation-play-state: paused;
+}
+
+/* Pulse animation for play button */
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(242, 101, 34, 0.7);
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 20px rgba(242, 101, 34, 0);
+  }
+}
+
+.pulse-button {
+  animation: pulse-glow 2.5s infinite;
+}
+
