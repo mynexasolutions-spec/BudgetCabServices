@@ -1,19 +1,65 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion, useAnimationFrame } from "framer-motion";
 import { Star, Quote } from "lucide-react";
 import { MOCK_TESTIMONIALS } from "@/constants/mockData";
 
+const TestimonialCard = ({ testimonial }: { testimonial: typeof MOCK_TESTIMONIALS[0] }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const maxLength = 150;
+  const shouldTruncate = testimonial.comment.length > maxLength;
+
+  const displayComment = !isExpanded && shouldTruncate 
+    ? testimonial.comment.slice(0, maxLength) + "..." 
+    : testimonial.comment;
+
+  return (
+    <motion.div layout className="w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 inline-flex flex-col bg-[#131722] border border-[#23293a] rounded-2xl p-5 md:p-6 hover:border-[#f26522]/30 transition-colors duration-300">
+      <motion.div layout="position" className="flex justify-between items-start mb-4">
+        <div className="flex text-[#f26522]">
+          {[...Array(testimonial.rating)].map((_, i) => (
+            <Star key={i} className="w-4 h-4 fill-current" />
+          ))}
+        </div>
+        <Quote className="w-8 h-8 text-[#23293a] opacity-50" />
+      </motion.div>
+      
+      <motion.p layout="position" className="text-gray-300 font-body text-sm md:text-base leading-relaxed mb-6 whitespace-normal min-h-[80px]">
+        &quot;{displayComment}&quot;
+        {shouldTruncate && (
+          <button 
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="text-[#f59e0b] hover:text-[#f26522] font-semibold ml-2 text-sm focus:outline-none transition-colors cursor-pointer"
+          >
+            {isExpanded ? "Read less" : "Read more"}
+          </button>
+        )}
+      </motion.p>
+      
+      <motion.div layout="position" className="mt-auto flex items-center gap-4">
+        <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f26522] to-orange-400 flex items-center justify-center text-white font-bold text-xl shrink-0">
+          {testimonial.name.charAt(0)}
+        </div>
+        <div className="overflow-hidden">
+          <h4 className="text-white font-bold font-heading truncate">{testimonial.name}</h4>
+          <p className="text-gray-500 text-xs truncate mt-0.5">{testimonial.location}</p>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 export default function TestimonialSection() {
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   // For a continuous marquee effect, we duplicate the testimonials
   const displayTestimonials = [...MOCK_TESTIMONIALS, ...MOCK_TESTIMONIALS, ...MOCK_TESTIMONIALS];
 
   useAnimationFrame((t, delta) => {
-    if (!scrollerRef.current) return;
+    if (!scrollerRef.current || isHovered) return;
     
     // Fast auto-slide speed
     const moveBy = 0.05 * delta;
@@ -40,11 +86,11 @@ export default function TestimonialSection() {
             <span className="w-2 h-2 rounded-full bg-[#f26522]" />
             <span className="text-sm font-medium text-gray-300 uppercase tracking-wider">Testimonials</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold font-heading text-white mb-6">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold font-heading text-white mb-4 sm:mb-6 text-center">
             What Our <span className="text-[#f26522]">Clients Say</span>
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto font-body">
-            Don&apos;t just take our word for it. Read what our valued customers have to say about their travel experiences with us.
+            Hear from our happy customers about their safe, comfortable, and reliable travel experiences with Budget Cab Services.
           </p>
         </div>
 
@@ -58,36 +104,11 @@ export default function TestimonialSection() {
             ref={scrollerRef}
             className="flex gap-6 overflow-x-hidden whitespace-nowrap py-4"
             style={{ WebkitOverflowScrolling: "touch" }}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
           >
             {displayTestimonials.map((testimonial, idx) => (
-              <div
-                key={`${testimonial.id}-${idx}`}
-                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] shrink-0 inline-flex flex-col bg-[#131722] border border-[#23293a] rounded-2xl p-5 md:p-6 hover:border-[#f26522]/30 transition-colors duration-300"
-              >
-                <div className="flex justify-between items-start mb-4">
-                  <div className="flex text-[#f26522]">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
-                    ))}
-                  </div>
-                  <Quote className="w-8 h-8 text-[#23293a] opacity-50" />
-                </div>
-                
-                <p className="text-gray-300 font-body text-sm md:text-base leading-relaxed mb-6 whitespace-normal min-h-[80px]">
-                  &quot;{testimonial.comment}&quot;
-                </p>
-                
-                <div className="mt-auto flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#f26522] to-orange-400 flex items-center justify-center text-white font-bold text-xl shrink-0">
-                    {testimonial.name.charAt(0)}
-                  </div>
-                  <div className="overflow-hidden">
-                    <h4 className="text-white font-bold font-heading truncate">{testimonial.name}</h4>
-                    <p className="text-[#f26522] text-sm truncate">{testimonial.role}</p>
-                    <p className="text-gray-500 text-xs truncate mt-0.5">{testimonial.location}</p>
-                  </div>
-                </div>
-              </div>
+              <TestimonialCard key={`${testimonial.id}-${idx}`} testimonial={testimonial} />
             ))}
           </div>
         </div>

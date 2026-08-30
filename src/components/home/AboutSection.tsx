@@ -3,7 +3,7 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle, Play } from "lucide-react";
+import { CheckCircle, ArrowRight } from "lucide-react";
 import { motion, useInView } from "framer-motion";
 import { Button } from "@/components/ui/Button";
 
@@ -145,18 +145,18 @@ export default function AboutSection() {
       <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Text & Features */}
-          <div className="lg:col-span-6 space-y-6">
+          <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
             <div className="space-y-2">
-              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#f26522]">
-                WELCOME TO PRIMECAB
+              <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#f26522] block text-center lg:text-left">
+                Welcome to Budget Cab Services
               </span>
-              <h2 className="text-3xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white leading-tight">
-                WE&apos;RE HERE TO MAKE YOUR JOURNEY SMOOTH
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white leading-tight text-center lg:text-left font-heading">
+                We Provide Trusted Cab Booking Service
               </h2>
             </div>
 
-            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-              PrimeCab is your trusted travel partner, offering safe, comfortable, and affordable rides across the city and beyond.
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed text-center lg:text-left">
+              Book Your Cab is a leading transportation service dedicated to providing convenient, safe, and reliable travel solutions. With a commitment to excellence and customer satisfaction, we have established ourselves as a trusted choice for individuals and businesses alike.
             </p>
 
             {/* Check Grid */}
@@ -194,14 +194,9 @@ export default function AboutSection() {
 
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 pt-4">
-              <Link href="/services">
-                <Button variant="primary" size="lg">
-                  Learn More
-                </Button>
-              </Link>
-              <Link href="/contact">
-                <Button variant="outline" size="lg">
-                  Contact Us
+              <Link href="#home">
+                <Button variant="primary" size="lg" className="rounded-[5px] flex items-center gap-2">
+                  Book Now <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
             </div>
@@ -213,7 +208,7 @@ export default function AboutSection() {
               {/* Top Image */}
               <div className="col-span-12 sm:col-span-8 relative h-[260px] sm:h-[300px] rounded-2xl overflow-hidden border border-[#23293a] shadow-xl">
                 <Image
-                  src="/images/resources/about-two-img-1.jpg"
+                  src="/images/img/img_01.webp"
                   alt="Driver handing over car key"
                   fill
                   className="object-cover"
@@ -226,27 +221,20 @@ export default function AboutSection() {
                   href="#video"
                   className="w-16 h-16 rounded-full bg-[#f26522] text-white flex items-center justify-center shadow-2xl pulse-button cursor-pointer"
                 >
-                  <Play className="w-7 h-7 fill-current translate-x-0.5" />
+                  <i className="icon-car text-3xl"></i>
                 </a>
               </div>
 
               {/* Bottom Image & Experience Badge */}
               <div className="col-span-12 sm:col-span-7 sm:col-start-6 sm:-mt-12 relative h-[220px] rounded-2xl overflow-hidden border border-[#23293a] z-10 shadow-2xl">
                 <Image
-                  src="/images/resources/about-two-img-2.jpg"
+                  src="/images/img/img_02.webp"
                   alt="PrimeCab driver smiling inside car"
                   fill
                   className="object-cover"
                 />
               </div>
 
-              {/* 10+ Years Experience Card */}
-              <div className="col-span-6 sm:col-span-5 sm:absolute sm:bottom-0 sm:right-0 z-20 bg-[#f26522] p-5 rounded-2xl text-white shadow-2xl text-left border border-white/20">
-                <span className="text-3xl font-black block tracking-tight">10+</span>
-                <span className="text-xs font-bold uppercase tracking-wider leading-snug block">
-                  Years of Experience
-                </span>
-              </div>
             </div>
           </div>
         </div>

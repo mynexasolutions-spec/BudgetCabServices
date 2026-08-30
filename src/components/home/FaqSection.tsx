@@ -14,11 +14,11 @@ export default function FaqSection() {
   return (
     <section id="faq" className="py-10 lg:py-25 bg-[#0b0e14] relative">
       <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-2 mb-14">
-          <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#f26522]">
+        <div className="text-center space-y-2 mb-10 sm:mb-14">
+          <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#f26522] block text-center">
             FAQ
           </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase text-white tracking-wide">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white tracking-wide text-center font-heading">
             FREQUENTLY <span className="text-[#f26522]">ASKED QUESTIONS</span>
           </h2>
         </div>
@@ -30,13 +30,13 @@ export default function FaqSection() {
             return (
               <div
                 key={faq.id}
-                className="bg-[#131722] border border-[#23293a] rounded-2xl overflow-hidden transition-all duration-300"
+                className="bg-[#131722] border border-[#23293a] rounded-[5px] overflow-hidden transition-all duration-300 w-[90%] mx-auto"
               >
                 <button
                   onClick={() => toggleFaq(idx)}
-                  className="w-full px-6 py-5 flex items-center justify-between text-left focus:outline-none cursor-pointer"
+                  className="w-full px-4 py-3 flex items-center justify-between text-left focus:outline-none cursor-pointer"
                 >
-                  <span className="text-base sm:text-lg font-bold text-white pr-4">
+                  <span className="text-[15px] sm:text-[16px] font-medium text-white pr-4">
                     {faq.question}
                   </span>
                   <div

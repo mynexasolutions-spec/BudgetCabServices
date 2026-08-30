@@ -2,21 +2,6 @@ import { FleetVehicle, ServiceItem, FaqItem, Testimonial } from "@/types";
 
 export const MOCK_FLEET: FleetVehicle[] = [
   {
-    id: "dzire",
-    name: "Maruti Dzire / Etios",
-    category: "Economy",
-    capacity: "4 Seats",
-    seats: "4 Seats",
-    transmission: "Manual",
-    luggage: "2 Bags",
-    ac: true,
-    ratePerKm: "₹11/km",
-    startingPrice: "₹1,499",
-    pricePerDay: "₹1,499 /day",
-    image: "/images/listing/listing-2-1.jpg",
-    popular: true,
-  },
-  {
     id: "honda-city",
     name: "Honda City / Verna",
     category: "Sedan",
@@ -26,9 +11,9 @@ export const MOCK_FLEET: FleetVehicle[] = [
     luggage: "2 Bags",
     ac: true,
     ratePerKm: "₹13/km",
-    startingPrice: "₹1,800",
-    pricePerDay: "₹1,800 /day",
-    image: "/images/listing/listing-2-2.jpg",
+    startingPrice: "₹4,200",
+    pricePerDay: "Full Day — ₹4,200",
+    image: "/images/listing/img_01.webp",
     popular: true,
   },
   {
@@ -41,9 +26,9 @@ export const MOCK_FLEET: FleetVehicle[] = [
     luggage: "3 Bags",
     ac: true,
     ratePerKm: "₹15/km",
-    startingPrice: "₹2,199",
-    pricePerDay: "₹2,199 /day",
-    image: "/images/listing/listing-2-3.jpg",
+    startingPrice: "₹4,500",
+    pricePerDay: "Full Day — ₹4,500",
+    image: "/images/listing/img_03.webp",
     popular: true,
   },
   {
@@ -56,68 +41,25 @@ export const MOCK_FLEET: FleetVehicle[] = [
     luggage: "4 Bags",
     ac: true,
     ratePerKm: "₹18/km",
-    startingPrice: "₹2,999",
-    pricePerDay: "₹2,999 /day",
-    image: "/images/listing/listing-2-4.jpg",
+    startingPrice: "₹5,500",
+    pricePerDay: "Full Day — ₹5,500",
+    image: "/images/listing/img_04.webp",
     popular: true,
   },
   {
     id: "tempo",
     name: "Tempo Traveller",
     category: "Group Travel",
-    capacity: "12-16 Seats",
-    seats: "16 Seats",
+    capacity: "3 Seats",
+    seats: "3 Seats",
     transmission: "Manual",
     luggage: "8 Bags",
     ac: true,
     ratePerKm: "₹24/km",
     startingPrice: "₹4,500",
-    pricePerDay: "₹4,500 /day",
-    image: "/images/listing/listing-2-5.jpg",
-  },
-  {
-    id: "audi-a6",
-    name: "Audi A6 Luxury",
-    category: "Premium Luxury",
-    capacity: "4 Seats",
-    seats: "4 Seats",
-    transmission: "Auto",
-    luggage: "3 Bags",
-    ac: true,
-    ratePerKm: "₹35/km",
-    startingPrice: "₹6,500",
-    pricePerDay: "₹6,500 /day",
-    image: "/images/listing/listing-2-6.jpg",
-  },
-  {
-    id: "bmw-5",
-    name: "BMW 5 Series",
-    category: "Sports Luxury",
-    capacity: "4 Seats",
-    seats: "4 Seats",
-    transmission: "Auto",
-    luggage: "3 Bags",
-    ac: true,
-    ratePerKm: "₹38/km",
-    startingPrice: "₹7,200",
-    pricePerDay: "₹7,200 /day",
-    image: "/images/listing/listing-2-7.jpg",
-    popular: true,
-  },
-  {
-    id: "fortuner",
-    name: "Toyota Fortuner 4x4",
-    category: "Premium 4x4",
-    capacity: "7 Seats",
-    seats: "7 Seats",
-    transmission: "Auto",
-    luggage: "4 Bags",
-    ac: true,
-    ratePerKm: "₹26/km",
-    startingPrice: "₹4,800",
-    pricePerDay: "₹4,800 /day",
-    image: "/images/listing/listing-2-8.jpg",
-  },
+    pricePerDay: "Full Day — ₹4,500",
+    image: "/images/listing/dummy.webp",
+  }
 ];
 
 export const MOCK_SERVICES: ServiceItem[] = [
@@ -145,60 +87,67 @@ export const MOCK_SERVICES: ServiceItem[] = [
 export const MOCK_FAQS: FaqItem[] = [
   {
     id: "faq-1",
-    question: "Are toll taxes and state driver charges included in the fare?",
-    answer: "Yes, our quotes clearly outline base fare, estimated toll charges, and driver allowance so there are no surprises.",
+    question: "How can I book a cab?",
+    answer:
+      "You can easily book a cab through our website or by contacting us directly.",
   },
   {
     id: "faq-2",
-    question: "Can I cancel my ride booking anytime?",
-    answer: "Free cancellation is available up to 4 hours before the scheduled pick-up time.",
+    question: "Do you provide airport transfer services?",
+    answer:
+      "Yes, we provide reliable and on-time airport pickup and drop services.",
   },
   {
     id: "faq-3",
-    question: "Are your vehicles sanitized and air-conditioned?",
-    answer: "All vehicles undergo regular maintenance and deep cleaning before every journey.",
+    question: "Do you offer outstation cab services?",
+    answer:
+      "Yes, we offer comfortable and affordable one-way and round-trip outstation cab services.",
+  },
+  {
+    id: "faq-4",
+    question: "Are your drivers experienced?",
+    answer:
+      "Yes, our drivers are professional, experienced, and committed to your safety.",
+  },
+  {
+    id: "faq-5",
+    question: "Are cab services available 24/7?",
+    answer:
+      "Yes, our services are available 24/7 based on booking and vehicle availability.",
   },
 ];
 
 export const MOCK_TESTIMONIALS: Testimonial[] = [
   {
     id: "test-1",
-    name: "Rajesh Sharma",
-    role: "Business Traveler",
+    name: "Vikas Aahuja",
     rating: 5,
-    comment: "Punctual driver, clean Innova Crysta, and transparent billing. Highly recommended for airport transfers!",
-    location: "Delhi to Jaipur",
+    comment:
+      "Amit Sharma (Driver) was helpful & polite. His driving was very perfect. I would recommend. But I would request to Budget Cab Services that pricing is very costly so kindly look into it & reduce price.",
+    location: "Mumbai",
   },
   {
     id: "test-2",
-    name: "Priya Patel",
-    role: "Family Vacation",
+    name: "Neha Mittal",
     rating: 5,
-    comment: "Booked Ertiga for outstation trip. Smooth ride and very courteous driver.",
-    location: "Mumbai to Pune",
+    comment:
+      "Excellent service. Driver Rahul Gupta arrived on time. Happy with safe driving behaviour of Ashish. Helped us to reach as close to the destination as possible in spite of several road closures in Nasik. Very happy with the service of Budget Cab Services and will recommend to others.",
+    location: "Nasik",
   },
   {
     id: "test-3",
-    name: "Amit Kumar",
-    role: "Regular Commuter",
+    name: "Aman Khan",
     rating: 5,
-    comment: "Best cab service I have ever used. The cars are always well-maintained and the drivers are very professional.",
-    location: "Delhi NCR",
+    comment:
+      "It was an excellent experience to travel with Budget Cab Services. The booking system is very smooth and drivers were well mannered, punctual and cooperative. I wish to recommend their services to all my friends and family.",
+    location: "Mumbai",
   },
   {
     id: "test-4",
-    name: "Sneha Reddy",
-    role: "Solo Traveler",
+    name: "Ankit Kumar",
     rating: 5,
-    comment: "Felt very safe during my late-night airport drop. The driver was polite and reached on time.",
-    location: "Hyderabad",
+    comment:
+      "Budget Cab Services offers an excellent service with prompt, professional drivers and well-maintained, clean cars. Booking is easy, and their customer support is responsive. Prices are competitive, making it great value for money. A reliable and comfortable choice for travel. Highly recommended!",
+    location: "Nasik",
   },
-  {
-    id: "test-5",
-    name: "Vikram Singh",
-    role: "Corporate Client",
-    rating: 4,
-    comment: "We use their services for all our corporate travels. Reliable, easy billing, and great fleet options.",
-    location: "Bangalore",
-  }
 ];

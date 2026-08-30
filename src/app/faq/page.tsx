@@ -1,4 +1,5 @@
 import Header from "@/components/layout/Header";
+import PageHeader from "@/components/about/PageHeader";
 import FaqSection from "@/components/home/FaqSection";
 import Footer from "@/components/layout/Footer";
 
@@ -9,18 +10,18 @@ export const metadata = {
 
 export default function FaqPage() {
   return (
-    <main className="min-h-screen bg-[#0b0e14] text-gray-100 overflow-x-hidden pt-20">
+    <main className="min-h-screen bg-[#0b0e14] text-gray-100 overflow-x-hidden pt-[72px] md:pt-[110px]">
       <Header />
-      <div className="bg-[#131722] border-b border-[#23293a] py-16 text-center">
-        <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-extrabold uppercase text-white tracking-wide">
-            Frequently <span className="text-[#f26522]">Asked Questions</span>
-          </h1>
-          <p className="text-sm text-gray-400 mt-2 max-w-lg mx-auto">
-            Everything you need to know about booking, payments, and our services.
-          </p>
-        </div>
-      </div>
+      <PageHeader
+        title="Frequently"
+        highlightText="Asked Questions"
+        tagline="Got Questions? We've Got Answers"
+        bgImage="/images/backgrounds/page_bg.webp"
+        breadcrumbs={[
+          { label: "Home", href: "/" },
+          { label: "FAQs" },
+        ]}
+      />
       <FaqSection />
       <Footer />
     </main>

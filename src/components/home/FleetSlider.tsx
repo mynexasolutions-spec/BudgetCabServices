@@ -89,27 +89,26 @@ export default function FleetSlider() {
 
       <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header: Title & Subtitle on Left, Prev/Next Arrows on Right */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-12 text-center sm:text-left">
           <div className="space-y-2">
-            <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#f26522] font-heading block">
+            <span className="text-xs sm:text-sm font-extrabold uppercase tracking-widest text-[#f26522] font-heading block text-center sm:text-left">
               EXPLORE OUR FLEET
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white font-heading tracking-tight leading-tight">
-              Most Popular Cars
-            </h2>
-            <p className="text-sm sm:text-base text-gray-400 font-sans max-w-xl font-normal pt-1">
-              Choose from a wide range of vehicles to suit your journey and
-              budget.
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white tracking-tight leading-tight max-w-3xl mx-auto font-heading lg:text-left text-center">
+            Most Popular Cars
+          </h2>
+            <p className="text-sm sm:text-base text-gray-400 font-sans max-w-xl font-normal pt-1 mx-auto sm:mx-0 text-center sm:text-left">
+             Choose from our well-maintained cars for comfortable, safe, and affordable local, airport, and outstation travel.
             </p>
           </div>
 
           {/* Navigation Arrow Controls */}
-          <div className="flex items-center gap-3 self-start sm:self-end">
+          <div className="flex items-center justify-center sm:justify-start gap-3 self-center sm:self-end">
             <button
               onClick={handlePrev}
               disabled={!canScrollPrev}
               aria-label="Previous Vehicles"
-              className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#131722] border border-[#23293a] flex items-center justify-center transition-all duration-300 shadow-md ${
+              className={`w-10 h-10 sm:w-11 sm:h-11 rounded-[5px] bg-[#131722] border border-[#23293a] flex items-center justify-center transition-all duration-300 shadow-md ${
                 canScrollPrev
                   ? "text-gray-200 hover:text-white hover:border-[#f26522] hover:bg-[#f26522]/10 hover:shadow-[#f26522]/20 active:scale-95 cursor-pointer"
                   : "text-gray-600 opacity-40 cursor-not-allowed border-[#1a1f2e]"
@@ -121,7 +120,7 @@ export default function FleetSlider() {
               onClick={handleNext}
               disabled={!canScrollNext}
               aria-label="Next Vehicles"
-              className={`w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#131722] border border-[#23293a] flex items-center justify-center transition-all duration-300 shadow-md ${
+              className={`w-10 h-10 sm:w-11 sm:h-11 rounded-[5px] bg-[#131722] border border-[#23293a] flex items-center justify-center transition-all duration-300 shadow-md ${
                 canScrollNext
                   ? "text-gray-200 hover:text-white hover:border-[#f26522] hover:bg-[#f26522]/10 hover:shadow-[#f26522]/20 active:scale-95 cursor-pointer"
                   : "text-gray-600 opacity-40 cursor-not-allowed border-[#1a1f2e]"
@@ -170,10 +169,10 @@ export default function FleetSlider() {
 
                   {/* Category & Title */}
                   <div className="space-y-1 px-1">
-                    <span className="text-xs font-bold text-[#f26522] uppercase tracking-wider block font-sans">
+                    <span className="text-[11px] font-bold text-[#f26522] uppercase tracking-wider block font-sans">
                       {car.category}
                     </span>
-                    <h3 className="text-lg sm:text-xl font-extrabold font-heading text-white group-hover:text-[#f26522] transition-colors leading-tight line-clamp-1">
+                    <h3 className="text-lg sm:text-xl font-bold font-heading text-white group-hover:text-[#f26522] transition-colors leading-tight line-clamp-1">
                       {car.name}
                     </h3>
                   </div>
@@ -206,16 +205,16 @@ export default function FleetSlider() {
                 </div>
 
                 {/* Bottom Row: Price on Left, Book Now Button on Right */}
-                <div className="pt-2 px-1 flex items-center justify-between gap-3 mt-auto">
+                <div className="px-1 flex items-center justify-between gap-3 mt-auto">
                   <div className="flex flex-col">
-                    <span className="text-lg sm:text-xl font-black font-heading text-white tracking-tight">
+                    <span className="text-[14px] sm:text-[15px] font-bold font-heading text-white tracking-tight">
                       {car.pricePerDay || car.startingPrice || "₹1,800"}
                     </span>
                   </div>
 
                   <Link
                     href="#booking"
-                    className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#f26522] hover:bg-[#e05413] text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-[#f26522]/20 hover:shadow-[#f26522]/40 transition-all duration-200 active:scale-95 group/btn"
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-[5px] bg-[#f26522] hover:bg-[#e05413] text-white font-extrabold text-xs sm:text-sm shadow-lg shadow-[#f26522]/20 hover:shadow-[#f26522]/40 transition-all duration-200 active:scale-95 group/btn"
                   >
                     <span>Book Now</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform" />

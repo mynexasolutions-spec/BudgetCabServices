@@ -5,48 +5,48 @@ import { motion } from "framer-motion";
 import { Car, UserCheck, ShieldCheck } from "lucide-react";
 
 export default function ProcessSection() {
-  const steps = [
-    {
-      num: "01",
-      title: "Choose A Car",
-      desc: "Open multipy a green form lesser their from in made herb multiply",
-      bgImage: "/images/backgrounds/process-one-single-bg-1.jpg",
-      iconClass: "icon-car-wash",
-      fallbackIcon: Car,
-      direction: "left",
-      delay: 0.1,
-    },
-    {
-      num: "02",
-      title: "Come In Contact",
-      desc: "Open multipy a green form lesser their from in made herb multiply",
-      bgImage: "/images/backgrounds/process-one-single-bg-2.jpg",
-      iconClass: "icon-in-person",
-      fallbackIcon: UserCheck,
-      direction: "left",
-      delay: 0.2,
-    },
-    {
-      num: "03",
-      title: "Pick-Up Locations",
-      desc: "Open multipy a green form lesser their from in made herb multiply",
-      bgImage: "/images/backgrounds/process-one-single-bg-3.jpg",
-      iconClass: "icon-car-insurance",
-      fallbackIcon: ShieldCheck,
-      direction: "right",
-      delay: 0.3,
-    },
-    {
-      num: "04",
-      title: "Enjoy Driving",
-      desc: "Open multipy a green form lesser their from in made herb multiply",
-      bgImage: "/images/backgrounds/process-one-single-bg-4.jpg",
-      iconClass: "icon-steering-wheel",
-      fallbackIcon: Car,
-      direction: "right",
-      delay: 0.4,
-    },
-  ];
+const steps = [
+  {
+    num: "01",
+    title: "Choose Your Cab",
+    desc: "Select a cab that suits your travel needs.",
+    bgImage: "/images/img/process_01.webp",
+    iconClass: "icon-car-wash",
+    fallbackIcon: Car,
+    direction: "left",
+    delay: 0.1,
+  },
+  {
+    num: "02",
+    title: "Book Your Ride",
+    desc: "Share your trip details and confirm your booking.",
+    bgImage: "/images/img/process_01.webp",
+    iconClass: "icon-in-person",
+    fallbackIcon: UserCheck,
+    direction: "left",
+    delay: 0.2,
+  },
+  {
+    num: "03",
+    title: "Choose Pick-Up",
+    desc: "Select your convenient pickup location.",
+    bgImage: "/images/img/process_01.webp",
+    iconClass: "icon-car-insurance",
+    fallbackIcon: ShieldCheck,
+    direction: "right",
+    delay: 0.3,
+  },
+  {
+    num: "04",
+    title: "Enjoy Your Ride",
+    desc: "Sit back and enjoy a safe, comfortable journey.",
+    bgImage: "/images/img/process_01.webp",
+    iconClass: "icon-steering-wheel",
+    fallbackIcon: Car,
+    direction: "right",
+    delay: 0.4,
+  },
+];
 
   return (
     <section id="process" className="pt-10 pb-5 lg:pt-20 lg:pb-10 bg-[#0b0e14] relative overflow-hidden">
@@ -67,8 +67,9 @@ export default function ProcessSection() {
           </div>
 
           {/* Main Title */}
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase text-white tracking-tight leading-tight max-w-3xl mx-auto font-heading">
-            Car Rental Process
+
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase text-white tracking-tight leading-tight max-w-3xl mx-auto font-heading text-center">
+           Car Rental Process
           </h2>
         </motion.div>
 
@@ -84,7 +85,7 @@ export default function ProcessSection() {
                 whileInView={{ opacity: 1, x: 0, y: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.6, delay: step.delay }}
-                className="relative bg-[#131722] border border-[#23293a] hover:border-[#f59e0b]/60 rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#f59e0b]/10 group overflow-hidden min-h-[300px]"
+                className="relative bg-[#131722] border border-[#23293a] hover:border-[#f59e0b]/60 rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[#f59e0b]/10 group overflow-hidden min-h-[265px]"
               >
                 {/* Background Car Image Overlay */}
                 <div className="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none z-0">
@@ -93,14 +94,14 @@ export default function ProcessSection() {
                     alt={step.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                    className="object-cover object-center opacity-20 group-hover:opacity-35 group-hover:scale-105 transition-all duration-500"
+                    className="object-cover object-center opacity-50 group-hover:opacity-80 group-hover:scale-105 transition-all duration-500"
                   />
                   {/* Dark Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e121c] via-[#131722]/80 to-[#131722]/85" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0e121c] via-[#131722]/30 to-[#131722]/55" />
                 </div>
 
                 {/* Top Row: Circular Icon Badge + Connecting Arrow + Outlined Step Number */}
-                <div className="flex items-center justify-between relative z-10 mb-8">
+                <div className="flex items-center justify-between relative z-10 mb-5">
                   {/* Circular Icon Container */}
                   <div className="relative shrink-0">
                     <div className="w-16 h-16 rounded-full bg-[#111622] border-2 border-[#f59e0b] p-1 flex items-center justify-center shadow-lg shadow-[#f59e0b]/15 group-hover:border-[#f26522] group-hover:shadow-[#f26522]/25 group-hover:scale-105 transition-all duration-300">

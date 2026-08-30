@@ -10,33 +10,33 @@ export default function VideoSection() {
   return (
     <section id="video" className="py-10 lg:py-25 bg-[#0b0e14] relative">
       <div className="max-w-[1350px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="relative rounded-3xl overflow-hidden border border-[#23293a] bg-[#131722] py-20 px-6 sm:px-12 text-center shadow-2xl">
+        <div className="relative rounded-[5px] overflow-hidden border border-[#f26522] bg-[#131722] py-20 px-6 sm:px-12 text-center shadow-2xl">
           {/* Background image overlay */}
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/backgrounds/video-two-bg.jpg"
+              src="/images/backgrounds/bg_02.webp"
               alt="Promotional Video Banner"
               fill
-              className="object-cover opacity-30 mix-blend-luminosity"
+              className="object-cover object-center-center opacity-80 mix-blend-overlay"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0b0e14] via-[#0b0e14]/70 to-[#0b0e14]"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0b0e14] via-[#0b0e14]/20 to-[#0b0e14]"></div>
           </div>
 
-          <div className="relative z-10 max-w-2xl mx-auto space-y-6">
+          <div className="relative z-10 max-w-2xl mx-auto space-y-8">
             {/* Animated Play Button */}
             <div className="flex justify-center">
               <button
                 onClick={() => setIsVideoOpen(true)}
-                className="w-20 h-20 rounded-full bg-[#f26522] text-white flex items-center justify-center shadow-2xl pulse-button hover:scale-110 transition-transform focus:outline-none cursor-pointer"
+                className="w-16 h-16 rounded-full bg-[#f26522] text-white flex items-center justify-center text-center shadow-2xl pulse-button  transition-transform focus:outline-none cursor-pointer"
                 aria-label="Play Promotional Video"
               >
-                <Play className="w-9 h-9 fill-current translate-x-1" />
+                <Play className="w-6 h-6 fill-current" />
               </button>
             </div>
 
-            <h2 className="text-2xl sm:text-4xl font-black uppercase text-white tracking-wide leading-tight">
-              Want to Know More About Us? <br />
-              <span className="text-[#f26522]">Play Our Promotional Video Now!</span>
+            <h2 className="text-2xl sm:text-4xl font-extrabold uppercase text-white tracking-wide leading-tight text-center font-heading">
+           Your Journey, <br className="hidden sm:inline" />{" "}
+              <span className="text-[#f26522]">Our Responsibility</span>
             </h2>
           </div>
         </div>
