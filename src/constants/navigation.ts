@@ -5,6 +5,7 @@ export const NAV_LINKS: NavItem[] = [
   { label: "Book Cab", href: "/cab-booking" },
   { label: "About Us", href: "/about" },
   { label: "Cab Services", href: "/cab-services" },
+  { label: "Outstation Routes", href: "/mumbai-outstation-cabs" },
   { label: "Blog", href: "/blog" },
   { label: "Payment", href: "/payment" },
   { label: "Contact", href: "/contact" },

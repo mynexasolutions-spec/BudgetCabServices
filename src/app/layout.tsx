@@ -29,7 +29,7 @@ const syne = Syne({
 export const metadata: Metadata = {
   title: `${SITE_CONFIG.name} - Premium Cab & Taxi Booking Service`,
   description: SITE_CONFIG.description,
-  keywords: "PrimeCab, taxi booking, car rental, outstation cabs, airport transfer, cab service",
+  keywords: "Budget Cab Services, Mumbai Nashik taxi service, Mumbai Shirdi cab service, Mumbai Trimbakeshwar taxi, outstation cabs, airport transfer",
 };
 
 export default function RootLayout({
