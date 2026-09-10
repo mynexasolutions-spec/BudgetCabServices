@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 
-import { useRouter } from "next/navigation";
 import {
   Car,
   ArrowRightLeft,
@@ -11,17 +10,18 @@ import {
   MapPin,
   ChevronLeft,
   ChevronRight,
-  Search,
   Plane,
   Clock3,
   Repeat,
   Check,
   Loader2,
   AlertCircle,
+  MessageCircle,
   Building2,
   Train,
 } from "lucide-react";
 import { LocationItem, LOCATIONS_DATABASE } from "@/constants/locations";
+import { SITE_CONFIG } from "@/constants/siteConfig";
 
 const LOCAL_PACKAGES = [
   "4 Hours / 40 Kms",
@@ -53,8 +53,7 @@ const TIME_SLOTS = Array.from({ length: 48 }, (_, i) => {
   return `${hours12.toString().padStart(2, "0")}:${minutes} ${period}`;
 });
 
-export default function HeroSearchForm({ className = "" }: { className?: string }) {
-  const router = useRouter();
+export default function HeroSearchForm({ className = "", compact = false }: { className?: string; compact?: boolean }) {
   const [activeTab, setActiveTab] = useState<"oneWay" | "roundTrip" | "local" | "airport">("oneWay");
 
   // Form input text states
@@ -121,6 +120,9 @@ export default function HeroSearchForm({ className = "" }: { className?: string 
   const [fullName, setFullName] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [passengers, setPassengers] = useState("");
+  const tripGridColumns = compact
+    ? "grid-cols-1 sm:grid-cols-2"
+    : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-5";
 
   const openPickupDropdown = (e?: React.FocusEvent<HTMLInputElement> | React.MouseEvent<HTMLInputElement>) => {
     setShowDropDropdown(false);
@@ -444,10 +446,19 @@ export default function HeroSearchForm({ className = "" }: { className?: string 
       queryParams.set("airport", selectedAirport);
     }
 
-    setTimeout(() => {
-      setIsSearching(false);
-      router.push(`/search?${queryParams.toString()}`);
-    }, 450);
+    const whatsappMessage = [
+      "Hello Budget Cab Services, I would like a cab quote.",
+      `Trip type: ${activeTab === "oneWay" ? "One way" : activeTab === "roundTrip" ? "Round trip" : activeTab === "local" ? "Local rental" : "Airport transfer"}`,
+      `Name: ${fullName}`,
+      `Phone: ${contactNumber}`,
+      `Pickup: ${queryParams.get("from")}`,
+      `Drop: ${queryParams.get("to") || queryParams.get("airport") || "Not specified"}`,
+      `Date: ${queryParams.get("date")}`,
+      `Time: ${queryParams.get("time")}`,
+      `Passengers: ${passengers}`,
+    ].join("\n");
+
+    window.location.href = `https://wa.me/${SITE_CONFIG.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(whatsappMessage)}`;
   };
 
   // Helper icon for location type
@@ -669,7 +680,7 @@ export default function HeroSearchForm({ className = "" }: { className?: string 
             {/* Form Title & User Details */}
             <div className="mb-5 sm:mb-6">
               <h2 className="text-sm sm:text-base font-heading font-extrabold text-[#f59e0b] tracking-wider uppercase mb-4 flex items-center gap-2">
-                CAB BOOKING FORM
+                CAB ENQUIRY FORM
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
                 {/* Full Name */}
@@ -742,7 +753,7 @@ export default function HeroSearchForm({ className = "" }: { className?: string 
 
             {/* ONE WAY FORM LAYOUT */}
             {activeTab === "oneWay" && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 items-end">
+              <div className={`grid ${tripGridColumns} gap-3.5 items-end`}>
                 {/* Field 1: PICKUP LOCATION */}
                 <div className="space-y-1.5 relative">
                   <label className="text-xs font-heading font-extrabold text-gray-200 block uppercase tracking-wider">
@@ -981,7 +992,7 @@ export default function HeroSearchForm({ className = "" }: { className?: string 
                   )}
                 </div>
 
-                {/* Field 5: SEARCH BUTTON */}
+                {/* Field 5: WHATSAPP ENQUIRY BUTTON */}
                 <div >
                   <button
                     type="submit"
@@ -991,12 +1002,12 @@ export default function HeroSearchForm({ className = "" }: { className?: string 
                     {isSearching ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin text-black" />
-                        <span>SEARCHING...</span>
+                        <span>OPENING WHATSAPP...</span>
                       </>
                     ) : (
                       <>
-                        <Search className="w-4 h-4 stroke-[2.5]" />
-                        <span>SEARCH</span>
+                        <MessageCircle className="w-4 h-4 stroke-[2.5]" />
+                        <span>GET QUOTE ON WHATSAPP</span>
                       </>
                     )}
                   </button>
@@ -1006,7 +1017,7 @@ export default function HeroSearchForm({ className = "" }: { className?: string 
 
             {/* ROUND TRIP FORM LAYOUT */}
             {activeTab === "roundTrip" && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 items-end">
+              <div className={`grid ${tripGridColumns} gap-3.5 items-end`}>
                 {/* Pickup Location */}
                 <div className="space-y-1.5 relative">
                   <label className="text-xs font-heading font-extrabold text-gray-200 block uppercase tracking-wider">
@@ -1193,12 +1204,12 @@ export default function HeroSearchForm({ className = "" }: { className?: string 
                     {isSearching ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin text-black" />
-                        <span>SEARCHING...</span>
+                        <span>OPENING WHATSAPP...</span>
                       </>
                     ) : (
                       <>
-                        <Search className="w-4 h-4 stroke-[2.5]" />
-                        <span>SEARCH</span>
+                        <MessageCircle className="w-4 h-4 stroke-[2.5]" />
+                        <span>GET QUOTE ON WHATSAPP</span>
                       </>
                     )}
                   </button>
@@ -1208,7 +1219,7 @@ export default function HeroSearchForm({ className = "" }: { className?: string 
 
             {/* LOCAL / HOURLY RENTAL LAYOUT */}
             {activeTab === "local" && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 items-end">
+              <div className={`grid ${tripGridColumns} gap-3.5 items-end`}>
                 {/* City */}
                 <div className="space-y-1.5 relative">
                   <label className="text-xs font-heading font-extrabold text-gray-200 block uppercase tracking-wider">
@@ -1363,12 +1374,12 @@ export default function HeroSearchForm({ className = "" }: { className?: string 
                     {isSearching ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin text-black" />
-                        <span>SEARCHING...</span>
+                        <span>OPENING WHATSAPP...</span>
                       </>
                     ) : (
                       <>
-                        <Search className="w-4 h-4 stroke-[2.5]" />
-                        <span>SEARCH</span>
+                        <MessageCircle className="w-4 h-4 stroke-[2.5]" />
+                        <span>GET QUOTE ON WHATSAPP</span>
                       </>
                     )}
                   </button>
@@ -1378,7 +1389,7 @@ export default function HeroSearchForm({ className = "" }: { className?: string 
 
             {/* AIRPORT TRANSFER LAYOUT */}
             {activeTab === "airport" && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5 items-end">
+              <div className={`grid ${tripGridColumns} gap-3.5 items-end`}>
                 {/* City */}
                 <div className="space-y-1.5 relative">
                   <label className="text-xs font-heading font-extrabold text-gray-200 block uppercase tracking-wider">
@@ -1533,12 +1544,12 @@ export default function HeroSearchForm({ className = "" }: { className?: string 
                     {isSearching ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin text-black" />
-                        <span>SEARCHING...</span>
+                        <span>OPENING WHATSAPP...</span>
                       </>
                     ) : (
                       <>
-                        <Search className="w-4 h-4 stroke-[2.5]" />
-                        <span>SEARCH</span>
+                        <MessageCircle className="w-4 h-4 stroke-[2.5]" />
+                        <span>GET QUOTE ON WHATSAPP</span>
                       </>
                     )}
                   </button>

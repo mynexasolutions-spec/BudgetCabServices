@@ -27,9 +27,8 @@ export default function Footer() {
   ];
 
   const mumbaiPhones = [
-    { display: "+91 89759 00092", raw: "+918975900092" },
     { display: "+91 91450 09000", raw: "+919145009000" },
-    { display: "+91 81495 32340", raw: "+918149532340" },
+    { display: "+91 78409 82340", raw: "+917840982340" },
     { display: "+91 98908 88792", raw: "+919890888792" },
   ];
 

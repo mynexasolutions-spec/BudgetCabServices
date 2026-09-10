@@ -72,7 +72,7 @@ export default function ContactMap() {
               </div>
               <div className="flex gap-2">
                 <a
-                  href={`tel:+918975900092`}
+                  href={`tel:+919145009000`}
                   className="py-2 px-3 rounded-xl bg-[#131722] hover:bg-[#161c2b] border border-[#23293a] text-gray-200 text-xs font-bold flex items-center gap-1.5 transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5 text-[#f26522]" />
