@@ -129,10 +129,10 @@ export default function Header() {
             {/* Brand Logo */}
             <Link href="/" className="flex items-center group shrink-0">
               <Image 
-                src="/budget_logo.webp" 
+                src="/budget_logo.jpeg"
                 alt="Budget Cab Services Logo" 
                 width={300} 
-                height={70} 
+                height={200}
                 className="w-auto h-14 sm:h-16 lg:h-16 object-contain transition-transform duration-300 group-hover:scale-[1.05]"
                 priority
               />

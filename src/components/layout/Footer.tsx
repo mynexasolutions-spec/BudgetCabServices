@@ -50,10 +50,10 @@ export default function Footer() {
           <div className="flex items-center gap-3">
             <Link href="/" className="inline-block shrink-0">
               <Image
-                src="/budget_logo.webp"
+                src="/budget_logo.jpeg"
                 alt="Budget Cab Services Logo"
                 width={240}
-                height={60}
+                height={160}
                 className="w-auto h-12 sm:h-14 object-contain"
               />
             </Link>
