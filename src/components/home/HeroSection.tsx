@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
 import {
   Car,
   ArrowRightLeft,
@@ -14,7 +13,7 @@ import {
   PhoneCall,
   ChevronLeft,
   ChevronRight,
-  Search,
+  MessageCircle,
   Plane,
   Clock3,
   Repeat,
@@ -25,6 +24,7 @@ import {
   Train,
 } from "lucide-react";
 import { LocationItem, LOCATIONS_DATABASE } from "@/constants/locations";
+import { SITE_CONFIG } from "@/constants/siteConfig";
 
 const LOCAL_PACKAGES = [
   "4 Hours / 40 Kms",
@@ -57,7 +57,6 @@ const TIME_SLOTS = Array.from({ length: 48 }, (_, i) => {
 });
 
 export default function HeroSection() {
-  const router = useRouter();
   const [activeTab, setActiveTab] = useState<"oneWay" | "roundTrip" | "local" | "airport">("oneWay");
 
   // Form input text states
@@ -415,10 +414,19 @@ export default function HeroSection() {
       queryParams.set("airport", selectedAirport);
     }
 
-    setTimeout(() => {
-      setIsSearching(false);
-      router.push(`/search?${queryParams.toString()}`);
-    }, 450);
+    const whatsappMessage = [
+      "Hello Budget Cab Services, I would like a cab quote.",
+      `Trip type: ${activeTab === "oneWay" ? "One way" : activeTab === "roundTrip" ? "Round trip" : activeTab === "local" ? "Local rental" : "Airport transfer"}`,
+      `Name: ${fullName}`,
+      `Phone: ${contactNumber}`,
+      `Pickup: ${queryParams.get("from")}`,
+      `Drop: ${queryParams.get("to") || queryParams.get("airport") || "Not specified"}`,
+      `Date: ${queryParams.get("date")}`,
+      `Time: ${queryParams.get("time")}`,
+      `Passengers: ${passengers}`,
+    ].join("\n");
+
+    window.location.href = `https://wa.me/${SITE_CONFIG.whatsapp.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(whatsappMessage)}`;
   };
 
   // Helper icon for location type
@@ -979,7 +987,7 @@ export default function HeroSection() {
                   )}
                 </div>
 
-                {/* Field 5: SEARCH BUTTON */}
+                {/* Field 5: WHATSAPP ENQUIRY BUTTON */}
                 <div >
                   <button
                     type="submit"
@@ -989,12 +997,12 @@ export default function HeroSection() {
                     {isSearching ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin text-black" />
-                        <span>SEARCHING...</span>
+                        <span>OPENING WHATSAPP...</span>
                       </>
                     ) : (
                       <>
-                        <Search className="w-4 h-4 stroke-[2.5]" />
-                        <span>SEARCH</span>
+                        <MessageCircle className="w-4 h-4 stroke-[2.5]" />
+                        <span>GET QUOTE ON WHATSAPP</span>
                       </>
                     )}
                   </button>
@@ -1189,12 +1197,12 @@ export default function HeroSection() {
                     {isSearching ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin text-black" />
-                        <span>SEARCHING...</span>
+                        <span>OPENING WHATSAPP...</span>
                       </>
                     ) : (
                       <>
-                        <Search className="w-4 h-4 stroke-[2.5]" />
-                        <span>SEARCH</span>
+                        <MessageCircle className="w-4 h-4 stroke-[2.5]" />
+                        <span>GET QUOTE ON WHATSAPP</span>
                       </>
                     )}
                   </button>
@@ -1358,12 +1366,12 @@ export default function HeroSection() {
                     {isSearching ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin text-black" />
-                        <span>SEARCHING...</span>
+                        <span>OPENING WHATSAPP...</span>
                       </>
                     ) : (
                       <>
-                        <Search className="w-4 h-4 stroke-[2.5]" />
-                        <span>SEARCH</span>
+                        <MessageCircle className="w-4 h-4 stroke-[2.5]" />
+                        <span>GET QUOTE ON WHATSAPP</span>
                       </>
                     )}
                   </button>
@@ -1527,12 +1535,12 @@ export default function HeroSection() {
                     {isSearching ? (
                       <>
                         <Loader2 className="w-4 h-4 animate-spin text-black" />
-                        <span>SEARCHING...</span>
+                        <span>OPENING WHATSAPP...</span>
                       </>
                     ) : (
                       <>
-                        <Search className="w-4 h-4 stroke-[2.5]" />
-                        <span>SEARCH</span>
+                        <MessageCircle className="w-4 h-4 stroke-[2.5]" />
+                        <span>GET QUOTE ON WHATSAPP</span>
                       </>
                     )}
                   </button>
