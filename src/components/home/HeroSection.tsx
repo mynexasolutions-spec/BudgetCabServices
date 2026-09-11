@@ -1002,7 +1002,7 @@ export default function HeroSection() {
                     ) : (
                       <>
                         <MessageCircle className="w-4 h-4 stroke-[2.5]" />
-                        <span>GET QUOTE ON WHATSAPP</span>
+                        <span>SUBMIT</span>
                       </>
                     )}
                   </button>
