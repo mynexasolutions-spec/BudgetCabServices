@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Outfit, Syne } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import "@/styles/icomoon.css";
 import { SITE_CONFIG } from "@/constants/siteConfig";
@@ -49,6 +50,19 @@ export default function RootLayout({
         />
       </head>
       <body suppressHydrationWarning className="bg-prime-dark text-gray-100 min-h-screen font-sans selection:bg-prime-orange selection:text-white">
+        {/* Google Ads (gtag.js) */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18461980605"
+          strategy="afterInteractive"
+        />
+        <Script id="google-ads-gtag" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-18461980605');
+          `}
+        </Script>
         {children}
         <ScrollToTop />
       </body>
